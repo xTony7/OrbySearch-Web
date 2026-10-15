@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>OG image source</title>
+  <!-- Source of assets/og.png (1200×630). Not linked from the site. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    .og { position: relative; width: 1200px; height: 630px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; isolation: isolate; }
+    .og .aurora { inset: -20% 0 auto; -webkit-mask-image: none; mask-image: none; }
+    .og h1 { margin: 0; font-size: 84px; line-height: 1; letter-spacing: -.045em; font-weight: 800; text-align: center; }
+    .og .bar {
+      width: 700px; height: 72px; border-radius: 36px; display: flex; align-items: center; gap: 18px; padding: 0 28px;
+      background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .22); backdrop-filter: blur(20px);
+      font-size: 28px; color: rgba(255, 255, 255, .6);
+    }
+    .og .bar svg { width: 30px; height: 30px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+    .og .brand { position: absolute; top: 40px; left: 50px; font-size: 26px; gap: 14px; }
+    .og .grad { animation: none; }
+  </style>
+</head>
+<body>
+  <div class="og">
+    <div class="aurora"><i></i><i></i><i></i></div>
+    <div class="brand"><img src="assets/icon.png" alt="" width="44" height="44"><span>WinSpotlight</span></div>
+    <h1>Todo tu PC,<br><span class="grad">a un atajo.</span></h1>
+    <div class="bar"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg>Alt + Espacio</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacidad · WinSpotlight</title>
+  <meta name="description" content="Política de privacidad de WinSpotlight / WinSpotlight privacy policy.">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .doc { max-width: 760px; margin: 0 auto; padding: 130px 16px 60px; }
+    .doc h1 { font-size: clamp(36px, 6vw, 56px); letter-spacing: -.04em; line-height: 1.05; margin: 0 0 10px; }
+    .doc .updated { color: var(--faint); font-size: 14px; margin: 0 0 40px; }
+    .doc h2 { font-size: 22px; letter-spacing: -.02em; margin: 40px 0 10px; }
+    .doc p, .doc li { color: var(--muted); font-size: 16px; }
+    .doc ul { padding-left: 20px; }
+    .doc a { color: var(--accent-2); }
+    .doc hr { border: 0; border-top: 1px solid var(--line); margin: 70px 0; }
+    .switch { display: flex; gap: 8px; margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="28" height="28"><span>WinSpotlight</span></a>
+    <div class="nav-actions"><a class="btn btn-small btn-ghost" href="index.html">← Inicio / Home</a></div>
+  </header>
+
+  <main class="doc">
+    <div class="switch"><a class="btn btn-small btn-ghost" href="#es">Español</a><a class="btn btn-small btn-ghost" href="#en">English</a></div>
+
+    <article id="es" lang="es">
+      <h1>Política de privacidad</h1>
+      <p class="updated">Última actualización: 15 de octubre de 2026</p>
+      <p>WinSpotlight es un buscador que funciona en tu PC con Windows. Está diseñado para que tus datos se queden en tu equipo. Esta política explica qué información usa y por qué.</p>
+
+      <h2>Qué información usa</h2>
+      <ul>
+        <li><b>Archivos de las carpetas que eliges:</b> nombres, ubicación, fechas y, para documentos compatibles (PDF, Word, texto y código), su contenido, para poder buscarlos.</li>
+        <li><b>Aplicaciones instaladas</b> del menú Inicio y de Microsoft Store, para poder abrirlas.</li>
+        <li><b>Historial del navegador</b>, solo si lo activas: títulos y direcciones de páginas visitadas, leídos de una copia temporal que se borra enseguida.</li>
+        <li><b>Portapapeles:</b> lo que copias se guarda en memoria durante 2 horas para la función de portapapeles. No se escribe en disco y se borra al cerrar la app.</li>
+        <li><b>Tus ajustes</b> (atajo, apariencia, carpetas).</li>
+      </ul>
+
+      <h2>Dónde se guarda</h2>
+      <p>Todo se guarda únicamente en tu equipo, en <code>%APPDATA%\WinSpotlight</code> y <code>%LOCALAPPDATA%\WinSpotlight</code>. WinSpotlight no tiene servidores, no requiere cuenta y no envía tus archivos, búsquedas, historial ni portapapeles a ninguna parte.</p>
+
+      <h2>Conexiones a internet</h2>
+      <p>WinSpotlight solo se conecta a internet para:</p>
+      <ul>
+        <li>Descargar los modelos de búsqueda la primera vez que se inicia (desde Hugging Face).</li>
+        <li>Obtener tipos de cambio cuando conviertes monedas (desde open.er-api.com, como máximo cada 12 horas). Esa petición no incluye nada de lo que escribes.</li>
+        <li>Abrir páginas web cuando tú lo pides, por ejemplo «Buscar en Google».</li>
+      </ul>
+      <p>No hay telemetría, analíticas, anuncios ni rastreadores.</p>
+
+      <h2>Seguridad</h2>
+      <p>El motor de búsqueda local solo escucha en tu equipo (127.0.0.1) y solo responde a WinSpotlight mediante una clave aleatoria. Rechaza peticiones de páginas web y nunca abre rutas de red.</p>
+
+      <h2>Tus opciones</h2>
+      <p>Puedes elegir qué carpetas se indexan, desactivar el historial del navegador en Configuración, reconstruir el índice o desinstalar la app. Al desinstalar puedes borrar las carpetas indicadas arriba para eliminar todos los datos.</p>
+
+      <h2>Menores</h2>
+      <p>WinSpotlight no recopila información personal de nadie, incluidos menores de edad.</p>
+
+      <h2>Cambios y contacto</h2>
+      <p>Si esta política cambia, se publicará aquí con una nueva fecha. Para dudas, abre un tema en <a href="https://github.com/xTony7/WinSpotlight/issues" rel="noopener">GitHub</a>.</p>
+    </article>
+
+    <hr>
+
+    <article id="en" lang="en">
+      <h1>Privacy policy</h1>
+      <p class="updated">Last updated: October 15, 2026</p>
+      <p>WinSpotlight is a search app that runs on your Windows PC. It is designed so that your data stays on your computer. This policy explains what information it uses and why.</p>
+
+      <h2>What it uses</h2>
+      <ul>
+        <li><b>Files in the folders you choose:</b> names, location, dates and, for supported documents (PDF, Word, text and code), their contents, so they can be searched.</li>
+        <li><b>Installed apps</b> from the Start menu and the Microsoft Store, so they can be opened.</li>
+        <li><b>Browser history</b>, only if you turn it on: page titles and addresses, read from a temporary copy that is deleted right away.</li>
+        <li><b>Clipboard:</b> what you copy is kept in memory for 2 hours for the clipboard feature. It is not written to disk and is cleared when the app closes.</li>
+        <li><b>Your settings</b> (shortcut, appearance, folders).</li>
+      </ul>
+
+      <h2>Where it is stored</h2>
+      <p>Everything is stored only on your computer, in <code>%APPDATA%\WinSpotlight</code> and <code>%LOCALAPPDATA%\WinSpotlight</code>. WinSpotlight has no servers, needs no account and never sends your files, searches, history or clipboard anywhere.</p>
+
+      <h2>Internet connections</h2>
+      <p>WinSpotlight only connects to the internet to:</p>
+      <ul>
+        <li>Download the search models the first time it starts (from Hugging Face).</li>
+        <li>Fetch exchange rates when you convert currencies (from open.er-api.com, at most every 12 hours). That request contains nothing you type.</li>
+        <li>Open web pages when you ask it to, such as "Search Google".</li>
+      </ul>
+      <p>There is no telemetry, analytics, advertising or tracking.</p>
+
+      <h2>Security</h2>
+      <p>The local search engine only listens on your computer (127.0.0.1) and only answers WinSpotlight, using a random key. It refuses requests from web pages and never opens network paths.</p>
+
+      <h2>Your choices</h2>
+      <p>You can choose which folders are indexed, turn off browser history in Settings, rebuild the index or uninstall the app. After uninstalling you can delete the folders above to remove all data.</p>
+
+      <h2>Children</h2>
+      <p>WinSpotlight does not collect personal information from anyone, including children.</p>
+
+      <h2>Changes and contact</h2>
+      <p>If this policy changes, the new version will be posted here with a new date. For questions, open an issue on <a href="https://github.com/xTony7/WinSpotlight/issues" rel="noopener">GitHub</a>.</p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="foot-brand"><img src="assets/icon.png" alt="" width="22" height="22"> WinSpotlight</div>
+    <nav class="foot-links"><a href="index.html">Inicio / Home</a><a href="https://github.com/xTony7/WinSpotlight" rel="noopener">GitHub</a></nav>
+  </footer>
+</body>
+</html>

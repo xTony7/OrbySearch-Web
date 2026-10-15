@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WinSpotlight — Todo tu PC, a un atajo</title>
+  <meta name="description" content="El buscador con el estilo de macOS Tahoe, hecho para Windows. Apps, archivos por significado, conversiones y tu portapapeles a un Alt + Espacio.">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WinSpotlight — Todo tu PC, a un atajo">
+  <meta property="og:description" content="El buscador con cristal líquido para Windows. Apps, archivos, conversiones y portapapeles a un Alt + Espacio.">
+  <meta property="og:image" content="assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Shared SVG: the classic "goo" filter for the small liquid illustration -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" />
+      </filter>
+    </defs>
+  </svg>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="WinSpotlight">
+      <img src="assets/icon.png" alt="" width="28" height="28">
+      <span>WinSpotlight</span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#funciones" data-i18n="nav.features">Funciones</a>
+      <a href="#privacidad" data-i18n="nav.privacy">Privacidad</a>
+      <a href="#precio" data-i18n="nav.price">Precio</a>
+      <a href="#faq" data-i18n="nav.faq">Preguntas</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang" id="lang" type="button" aria-label="Cambiar idioma / Change language">EN</button>
+      <a class="btn btn-small btn-primary" href="#precio" data-i18n="nav.cta">Obtener</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="pill reveal"><span class="dot"></span><span data-i18n="hero.pill">Nuevo en v1.3 · Cristal líquido</span></p>
+      <h1 class="hero-title">
+        <span class="line" data-i18n="hero.t1">Todo tu PC,</span>
+        <span class="line grad" data-i18n="hero.t2">a un atajo.</span>
+      </h1>
+      <p class="hero-sub reveal" style="--d:.15s" data-i18n="hero.sub">
+        El buscador con el estilo de macOS Tahoe, hecho para Windows. Abre apps, encuentra archivos por lo que
+        contienen, convierte monedas y recupera lo que copiaste. Solo pulsa <kbd>Alt</kbd> + <kbd>Espacio</kbd>.
+      </p>
+      <div class="hero-cta reveal" style="--d:.25s">
+        <a class="btn btn-primary magnetic" href="#precio"><span data-i18n="hero.buy">Obtener</span> <span class="price-inline" data-price></span></a>
+        <a class="btn btn-ghost" href="#funciones" data-i18n="hero.how">Ver cómo funciona</a>
+      </div>
+      <p class="hero-note reveal" style="--d:.35s" data-i18n="hero.note">Windows 10 y 11 · Funciona sin conexión · Sin cuentas</p>
+
+      <!-- Live demo: the real liquid-glass bar, ported from the app -->
+      <div class="stage reveal" style="--d:.45s" id="stage">
+        <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="demo-scale" id="demoScale">
+          <div class="demo" id="demo" aria-label="Demostración animada del buscador" role="img">
+            <svg class="goo-shadow" id="gooShadowSvg" width="760" height="52" aria-hidden="true"><path id="gooShadow" /></svg>
+            <div class="goo-clip" id="gooGlass"><div class="goo-glass"></div></div>
+            <svg class="goo-rim" id="gooRimSvg" width="760" height="52" aria-hidden="true"><path id="gooRim" /></svg>
+            <div class="capsule" id="capsule">
+              <span class="lead" id="lead"></span>
+              <span class="query"><span id="qText"></span><span class="caret"></span><span class="ph" id="qPh" data-i18n="demo.ph">Buscar</span></span>
+              <span class="more" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" /><circle cx="6.5" cy="10" r=".9" class="f"/><circle cx="10" cy="10" r=".9" class="f"/><circle cx="13.5" cy="10" r=".9" class="f"/></svg></span>
+            </div>
+            <div class="drops" id="drops"></div>
+            <div class="card" id="card"><div class="card-in" id="cardIn"></div><div class="card-foot"><span data-i18n="demo.foot">Todo en tu PC · 0,03 s</span><span>↵</span></div></div>
+          </div>
+        </div>
+        <div class="stage-caption" aria-live="polite"><span class="keycap" id="capKey">Esc</span><span id="capText"></span></div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section class="section" id="funciones">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="feat.eyebrow">Funciones</p>
+        <h2 data-i18n="feat.title">Pequeños detalles.<br><span class="grad">Gran diferencia.</span></h2>
+      </div>
+      <div class="bento">
+        <article class="tile tile-wide glow reveal">
+          <div class="tile-art art-liquid" aria-hidden="true">
+            <svg viewBox="0 0 580 120"><g filter="url(#goo)">
+              <rect x="20" y="34" width="300" height="52" rx="26" />
+              <circle class="b b1" cx="294" cy="60" r="24" /><circle class="b b2" cx="294" cy="60" r="24" />
+              <circle class="b b3" cx="294" cy="60" r="24" /><circle class="b b4" cx="294" cy="60" r="24" />
+            </g></svg>
+          </div>
+          <h3 data-i18n="f1.t">Cristal líquido</h3>
+          <p data-i18n="f1.p">Los botones se desprenden de la barra como gotas y se funden con ella al escribir. Animaciones con resortes, fluidas como en un Mac.</p>
+        </article>
+        <article class="tile glow reveal" style="--d:.08s">
+          <div class="tile-art art-semantic" aria-hidden="true">
+            <div class="mini-field"><span class="mini-ic"></span><span class="typer" data-typer="f2.q"></span></div>
+            <div class="mini-hit"><span class="fi pdf">PDF</span><span><b>recibo_cfe_03.pdf</b><small data-i18n="f2.hit">«…total a pagar, periodo marzo…»</small></span></div>
+          </div>
+          <h3 data-i18n="f2.t">Busca por significado</h3>
+          <p data-i18n="f2.p">Escribe lo que recuerdas, no el nombre exacto. Lee el contenido de tus PDF, documentos de Word y código.</p>
+        </article>
+        <article class="tile glow reveal" style="--d:.12s">
+          <div class="tile-art art-conv" aria-hidden="true">
+            <div class="conv"><span class="conv-from" id="convFrom">10 USD</span><span class="conv-eq">=</span><span class="conv-to" id="convTo">184.64 MXN</span></div>
+          </div>
+          <h3 data-i18n="f3.t">Conversiones al instante</h3>
+          <p data-i18n="f3.p">Monedas, distancias, peso y temperatura mientras escribes. Pulsa ↵ y el resultado queda copiado.</p>
+        </article>
+        <article class="tile glow reveal" style="--d:.16s">
+          <div class="tile-art art-clip" aria-hidden="true">
+            <div class="clip c1"><span class="fi txt">Aa</span><span data-i18n="f4.c1">Dirección de envío…</span></div>
+            <div class="clip c2"><span class="fi img"></span><span data-i18n="f4.c2">Captura de pantalla</span></div>
+            <div class="clip c3"><span class="fi doc">DOC</span><span>propuesta_final.docx</span></div>
+          </div>
+          <h3 data-i18n="f4.t">Portapapeles de 2 horas</h3>
+          <p data-i18n="f4.p">Textos, imágenes y archivos que copiaste. Encuéntralos y vuelve a copiarlos con un Enter.</p>
+        </article>
+        <article class="tile glow reveal" style="--d:.2s">
+          <div class="tile-art art-layout" aria-hidden="true"><div class="layout" id="layoutDemo"></div></div>
+          <h3 data-i18n="f5.t">Cuadrícula o lista</h3>
+          <p data-i18n="f5.p">Iconos grandes para tus apps o filas compactas para tus archivos. Cambia con un clic.</p>
+        </article>
+        <article class="tile tile-full glow reveal" style="--d:.1s">
+          <div class="tile-art art-actions" aria-hidden="true">
+            <div class="marquee"><div class="marquee-track" id="actionsTrack"></div></div>
+          </div>
+          <h3 data-i18n="f6.t">Atajos para todo</h3>
+          <p data-i18n="f6.p">Bloquear el equipo, vaciar la papelera, hacer una captura, crear un documento o buscar en YouTube. Sin abrir menús.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= KEYBOARD ================= -->
+    <section class="section keys-section">
+      <div class="keys-visual reveal" aria-hidden="true">
+        <span class="key k-alt">Alt</span><span class="plus">+</span><span class="key k-space" data-i18n="keys.space">Espacio</span>
+      </div>
+      <div class="section-head reveal" style="--d:.1s">
+        <h2 data-i18n="keys.title">Un atajo.<br><span class="grad">Todo tu PC.</span></h2>
+        <p class="lead-text" data-i18n="keys.p">Aparece encima de cualquier ventana y desaparece cuando terminas. Sin cambiar de app, sin tocar el ratón.</p>
+      </div>
+      <ul class="shortcuts reveal" style="--d:.2s">
+        <li><span class="keycap">↵</span><span data-i18n="keys.enter">Abrir</span></li>
+        <li><span class="keycap">Ctrl ↵</span><span data-i18n="keys.reveal">Mostrar en el Explorador</span></li>
+        <li><span class="keycap">Ctrl 1–4</span><span data-i18n="keys.scopes">Apps, archivos, atajos, portapapeles</span></li>
+        <li><span class="keycap">Esc</span><span data-i18n="keys.esc">Borrar, volver o cerrar</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= PERSONALIZE ================= -->
+    <section class="section personalize">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="pers.eyebrow">Apariencia</p>
+        <h2 data-i18n="pers.title">Hazlo <span class="grad">tuyo.</span></h2>
+        <p class="lead-text" data-i18n="pers.p">Claro u oscuro, ocho colores de acento, desenfoque, transparencia, tamaño y largo de la barra. Pruébalo:</p>
+      </div>
+      <div class="accents reveal" style="--d:.1s" id="accents" role="radiogroup" aria-label="Color de acento"></div>
+    </section>
+
+    <!-- ================= PRIVACY ================= -->
+    <section class="section privacy" id="privacidad">
+      <div class="shield reveal" aria-hidden="true">
+        <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+        <svg viewBox="0 0 48 48"><rect x="10" y="21" width="28" height="20" rx="5" /><path d="M16 21v-5a8 8 0 0 1 16 0v5" /><circle cx="24" cy="31" r="2.6" class="f" /></svg>
+      </div>
+      <div class="section-head reveal" style="--d:.1s">
+        <p class="eyebrow" data-i18n="priv.eyebrow">Privacidad</p>
+        <h2 data-i18n="priv.title">Lo que buscas<br><span class="grad">se queda en tu PC.</span></h2>
+      </div>
+      <div class="priv-grid">
+        <div class="priv reveal" style="--d:.1s"><h3 data-i18n="priv.1t">Índice local</h3><p data-i18n="priv.1p">Tus archivos, búsquedas y portapapeles nunca salen de tu equipo. No hay nube.</p></div>
+        <div class="priv reveal" style="--d:.16s"><h3 data-i18n="priv.2t">Sin cuentas ni rastreo</h3><p data-i18n="priv.2p">No te pedimos correo, no hay telemetría ni anuncios. Lo instalas y funciona.</p></div>
+        <div class="priv reveal" style="--d:.22s"><h3 data-i18n="priv.3t">Protegido</h3><p data-i18n="priv.3p">El motor de búsqueda solo responde a WinSpotlight, con una clave que ninguna página web conoce.</p></div>
+        <div class="priv reveal" style="--d:.28s"><h3 data-i18n="priv.4t">Código abierto</h3><p data-i18n="priv.4p">Cualquiera puede revisar lo que hace. Basado en LSearch, con licencia Apache 2.0.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section class="section pricing" id="precio">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="price.eyebrow">Precio</p>
+        <h2 data-i18n="price.title">Un pago.<br><span class="grad">Tuyo para siempre.</span></h2>
+      </div>
+      <div class="price-card glow reveal" style="--d:.1s">
+        <div class="price-top">
+          <img src="assets/icon.png" alt="" width="64" height="64">
+          <div><h3>WinSpotlight</h3><p data-i18n="price.once">Pago único · sin suscripción</p></div>
+        </div>
+        <p class="price"><span data-price-big></span></p>
+        <ul class="checks">
+          <li data-i18n="price.l1">Todas las funciones, sin límites</li>
+          <li data-i18n="price.l2">Actualizaciones incluidas</li>
+          <li data-i18n="price.l3">Prueba gratis antes de comprar</li>
+          <li data-i18n="price.l4">Windows 10 y 11 · español e inglés</li>
+        </ul>
+        <a class="btn btn-primary btn-block" id="storeBtn" href="#" data-i18n="price.store">Muy pronto en Microsoft Store</a>
+        <a class="btn btn-ghost btn-block" id="betaBtn" href="#" data-i18n="price.beta">Probar la beta gratis</a>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section faq" id="faq">
+      <div class="section-head reveal"><h2 data-i18n="faq.title">Preguntas frecuentes</h2></div>
+      <div class="faq-list">
+        <details class="reveal"><summary data-i18n="faq.q1">¿Necesita internet?</summary><p data-i18n="faq.a1">No. Solo descarga los modelos de búsqueda la primera vez y, si conviertes monedas, consulta el tipo de cambio. Todo lo demás funciona sin conexión.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q2">¿Qué necesito para usarlo?</summary><p data-i18n="faq.a2">Windows 10 (1809 o posterior) u 11 de 64 bits, 8 GB de RAM y unos 400 MB de espacio más el índice. No hace falta instalar Python ni .NET.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q3">¿Mis datos salen del PC?</summary><p data-i18n="faq.a3">No. El índice, tus búsquedas y el historial del portapapeles se guardan solo en tu equipo. Lee la <a href="privacy.html">política de privacidad</a>.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q4">¿Puedo cambiar el atajo de teclado?</summary><p data-i18n="faq.a4">Sí. En Configuración haz clic en el atajo y pulsa la combinación que prefieras.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q5">¿Qué carpetas busca?</summary><p data-i18n="faq.a5">Las que tú elijas al instalarlo (Documentos, Escritorio, Descargas…). Además encuentra apps del menú Inicio y de Microsoft Store, y opcionalmente el historial de tu navegador.</p></details>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section class="final">
+      <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <h2 class="reveal" data-i18n="final.title">Busca menos.<br><span class="grad">Encuentra más.</span></h2>
+      <a class="btn btn-primary magnetic reveal" style="--d:.1s" href="#precio"><span data-i18n="hero.buy">Obtener</span> <span class="price-inline" data-price></span></a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="foot-brand"><img src="assets/icon.png" alt="" width="22" height="22"> WinSpotlight</div>
+    <nav class="foot-links">
+      <a href="privacy.html" data-i18n="foot.privacy">Privacidad</a>
+      <a href="https://github.com/xTony7/WinSpotlight" rel="noopener">GitHub</a>
+    </nav>
+    <p class="foot-legal" data-i18n="foot.legal">© 2026 WinSpotlight. Basado en <a href="https://github.com/blueprintnerd/LSearch" rel="noopener">LSearch</a> de blueprintnerd (Apache 2.0). macOS es una marca de Apple Inc.; Windows es una marca de Microsoft. Este proyecto no está afiliado con ninguna de ellas.</p>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
