@@ -1,4 +1,4 @@
-/* WinSpotlight landing page. No dependencies. */
+/* OrbySearch landing page. No dependencies. */
 "use strict";
 
 // ---- settings you will want to change -------------------------------------------------------
@@ -6,7 +6,6 @@ const CONFIG = {
   price: "3.99",
   currency: "USD",
   storeUrl: "",  // Microsoft Store link once it is published; empty shows "coming soon"
-  betaUrl: "https://github.com/xTony7/WinSpotlight/releases/latest",
 };
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -17,18 +16,23 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 // ---- language -----------------------------------------------------------------------------------
 // Spanish lives in the HTML; English is here. JS-only strings carry both.
 const EN = {
-  "nav.features": "Features", "nav.privacy": "Privacy", "nav.price": "Pricing", "nav.faq": "FAQ", "nav.cta": "Get it",
-  "hero.pill": "New in v1.3 · Liquid glass",
+  "nav.features": "Features", "nav.speed": "Speed", "nav.privacy": "Privacy", "nav.price": "Pricing", "nav.faq": "FAQ", "nav.cta": "Get it",
+  "hero.pill": "New · OrbySearch 2.0 with its own engine",
   "hero.t1": "Your whole PC,", "hero.t2": "one shortcut away.",
-  "hero.sub": "The search bar with the look of macOS Tahoe, built for Windows. Open apps, find files by what's inside them, convert currencies and get back what you copied. Just press <kbd>Alt</kbd> + <kbd>Space</kbd>.",
-  "hero.buy": "Get it", "hero.how": "See how it works",
+  "hero.sub": "The fastest search for Windows, made of liquid glass. Open apps, find files by what they say, convert currencies and get back what you copied. Just press <kbd>Alt</kbd> + <kbd>Space</kbd>.",
+  "hero.buy": "Get it", "hero.how": "How fast?",
   "hero.note": "Windows 10 and 11 · Works offline · No account",
-  "demo.ph": "Search", "demo.foot": "All on your PC · 0.03 s",
+  "demo.ph": "Search with OrbySearch", "demo.foot": "65,483 files · 0.4 ms",
+  "speed.eyebrow": "Speed", "speed.title": "Faster than<br><span class=\"grad\">Windows search.</span>",
+  "speed.p": "OrbySearch brings its own search engine. Results show up while you type, before you finish the word.",
+  "speed.r1": "File names", "speed.r2": "First results while typing", "speed.r3": "Words inside documents",
+  "speed.win": "Windows search index",
+  "speed.note": "Median of 30 equivalent searches on a PC with 65,000 files and 23,000 documents, compared with the Windows Search index. Times vary by computer.",
   "feat.eyebrow": "Features", "feat.title": "Small details.<br><span class=\"grad\">Big difference.</span>",
-  "f1.t": "Liquid glass", "f1.p": "The buttons bud off the bar like drops and melt back into it as you type. Spring animations, as smooth as on a Mac.",
-  "f2.t": "Search by meaning", "f2.p": "Type what you remember, not the exact name. It reads inside your PDFs, Word documents and code.",
+  "f1.t": "Liquid glass", "f1.p": "The buttons bud off the bar like drops and melt back into it as you type. Spring animations, smooth and natural.",
+  "f2.t": "Search by meaning", "f2.p": "Type what you remember, not the exact name. It understands your PDFs and documents in 100+ languages, without leaving your PC.",
   "f2.hit": "“…amount due, billing period March…”",
-  "f3.t": "Instant conversions", "f3.p": "Currencies, distance, weight and temperature as you type. Press ↵ and the result is copied.",
+  "f3.t": "Instant conversions", "f3.p": "Currencies, distance, weight, temperature and a calculator as you type. Press ↵ and the result is copied.",
   "f4.t": "2-hour clipboard", "f4.p": "Text, images and files you copied. Find them and copy them again with one Enter.",
   "f4.c1": "Shipping address…", "f4.c2": "Screenshot",
   "f5.t": "Grid or list", "f5.p": "Big icons for your apps or compact rows for your files. Switch with one click.",
@@ -39,25 +43,32 @@ const EN = {
   "pers.eyebrow": "Appearance", "pers.title": "Make it <span class=\"grad\">yours.</span>",
   "pers.p": "Light or dark, eight accent colors, blur, transparency, size and bar length. Try it:",
   "priv.eyebrow": "Privacy", "priv.title": "What you search for<br><span class=\"grad\">stays on your PC.</span>",
-  "priv.1t": "Local index", "priv.1p": "Your files, searches and clipboard never leave your computer. There is no cloud.",
-  "priv.2t": "No account, no tracking", "priv.2p": "No email sign-up, no telemetry, no ads. Install it and it works.",
-  "priv.3t": "Locked down", "priv.3p": "The search engine only answers WinSpotlight, with a key no website knows.",
-  "priv.4t": "Open source", "priv.4p": "Anyone can check what it does. Based on LSearch, Apache 2.0 licensed.",
+  "priv.1t": "All local", "priv.1p": "The index, your searches and your clipboard never leave your computer. No cloud, no servers.",
+  "priv.2t": "No account, no tracking", "priv.2p": "No email needed to use it, no telemetry, no ads. Install it and it works.",
+  "priv.3t": "Works offline", "priv.3p": "Even search by meaning runs on your PC. The internet is only used to download the model once and for exchange rates.",
+  "priv.4t": "You decide", "priv.4p": "Choose which folders it reads, whether it includes browser history and whether it uses search by meaning.",
   "price.eyebrow": "Pricing", "price.title": "Pay once.<br><span class=\"grad\">Yours forever.</span>",
   "price.once": "One-time purchase · no subscription",
-  "price.l1": "Every feature, no limits", "price.l2": "Updates included", "price.l3": "Free trial before you buy", "price.l4": "Windows 10 and 11 · English and Spanish",
-  "price.store": "Coming soon to the Microsoft Store", "price.storeBuy": "Buy on the Microsoft Store", "price.beta": "Try the free beta",
+  "price.l1": "Every feature, no limits", "price.l2": "Updates included", "price.l3": "Install it on all your PCs with your Microsoft account", "price.l4": "Windows 10 and 11 · English and Spanish",
+  "price.store": "Coming soon to the Microsoft Store", "price.storeBuy": "Get it on the Microsoft Store",
+  "notify.label": "Want us to tell you when it's out?", "notify.ph": "you@email.com", "notify.btn": "Notify me",
+  "notify.ok": "Done! We'll email you on launch day.", "notify.err": "That didn't go through. Please try again in a moment.",
   "faq.title": "Questions",
-  "faq.q1": "Does it need the internet?", "faq.a1": "No. It only downloads the search models the first time and, if you convert currencies, fetches exchange rates. Everything else works offline.",
-  "faq.q2": "What do I need to run it?", "faq.a2": "64-bit Windows 10 (1809 or later) or 11, 8 GB of RAM and about 400 MB of disk plus the index. No need to install Python or .NET.",
+  "faq.q0": "Is it really faster than Windows search?", "faq.a0": "Yes. OrbySearch has its own engine and keeps its indexes in memory: it finds file names about 25 times faster and words inside documents about 10 times faster than the Windows Search index, for the same query. It also starts showing results from the first letter.",
+  "faq.q1": "Does it need the internet?", "faq.a1": "No. It downloads the search-by-meaning model once (about 135 MB) and, if you convert currencies, fetches exchange rates. Everything else works offline.",
+  "faq.q2": "What do I need to run it?", "faq.a2": "64-bit Windows 10 (version 1809 or later) or 11, 4 GB of RAM (8 GB recommended) and about 500 MB of disk plus the index. Nothing else to install.",
   "faq.q3": "Does my data leave my PC?", "faq.a3": "No. The index, your searches and your clipboard history are stored only on your computer. Read the <a href=\"privacy.html\">privacy policy</a>.",
-  "faq.q4": "Can I change the shortcut?", "faq.a4": "Yes. In Settings, click the shortcut and press the combination you prefer.",
-  "faq.q5": "Which folders does it search?", "faq.a5": "The ones you pick when you install it (Documents, Desktop, Downloads…). It also finds Start-menu and Microsoft Store apps, and optionally your browser history.",
+  "faq.q4": "What exactly does it search?", "faq.a4": "Start-menu and Microsoft Store apps, files and folders on all your drives, the contents of documents in the folders you choose (PDF, Word, Excel, PowerPoint, text and code) and, if you turn it on, your Chrome, Edge, Brave, Vivaldi, Opera and Firefox history.",
+  "faq.q5": "Can I change the shortcut?", "faq.a5": "Yes. In Settings, click the shortcut and press the combination you prefer.",
+  "faq.q6": "How do I buy it?", "faq.a6": "OrbySearch will be sold on the Microsoft Store as a one-time purchase. Leave your email above and we'll tell you the day it launches.",
   "final.title": "Search less.<br><span class=\"grad\">Find more.</span>",
   "foot.privacy": "Privacy",
-  "foot.legal": "© 2026 WinSpotlight. Based on <a href=\"https://github.com/blueprintnerd/LSearch\" rel=\"noopener\">LSearch</a> by blueprintnerd (Apache 2.0). macOS is a trademark of Apple Inc.; Windows is a trademark of Microsoft. This project is not affiliated with either.",
+  "foot.legal": "© 2026 OrbySearch. All rights reserved. Windows and Microsoft Store are trademarks of Microsoft; OrbySearch is not affiliated with Microsoft.",
 };
-const ES_JS = { "price.storeBuy": "Comprar en Microsoft Store" };
+const ES_JS = {
+  "price.storeBuy": "Obtener en Microsoft Store", "notify.ph": "tu@correo.com",
+  "notify.ok": "¡Listo! Te escribiremos el día del lanzamiento.", "notify.err": "No se pudo enviar. Inténtalo de nuevo en un momento.",
+};
 const ES = {};
 $$("[data-i18n]").forEach(el => { ES[el.dataset.i18n] = el.innerHTML.trim(); });
 
@@ -71,8 +82,12 @@ const pick = (es, en) => (lang === "en" ? en : es);
 function applyLang() {
   document.documentElement.lang = lang;
   $$("[data-i18n]").forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+  $$("[data-i18n-attr]").forEach(el => {
+    const [attr, key] = el.dataset.i18nAttr.split(":");
+    el.setAttribute(attr, t(key));
+  });
   $("#lang").textContent = lang === "en" ? "ES" : "EN";
-  document.title = pick("WinSpotlight — Todo tu PC, a un atajo", "WinSpotlight — Your whole PC, one shortcut away");
+  document.title = pick("OrbySearch — Todo tu PC, a un atajo", "OrbySearch — Your whole PC, one shortcut away");
   applyPrice();
   fillActions();
   layoutDemo?.refresh();
@@ -88,8 +103,7 @@ function applyPrice() {
   $$("[data-price]").forEach(el => { el.textContent = `· ${money}`; });
   const big = $("[data-price-big]");
   big.innerHTML = lang === "en" ? `$${CONFIG.price}<small>${CONFIG.currency}</small>` : `${CONFIG.price.replace(".", ",")}<small>${CONFIG.currency}</small>`;
-  const store = $("#storeBtn"), beta = $("#betaBtn");
-  beta.href = CONFIG.betaUrl;
+  const store = $("#storeBtn");
   if (CONFIG.storeUrl) {
     store.href = CONFIG.storeUrl;
     store.textContent = t("price.storeBuy");
@@ -128,7 +142,40 @@ if (!reduced) $$(".magnetic").forEach(el => {
   el.addEventListener("pointerleave", () => { el.style.setProperty("--mx", "0px"); el.style.setProperty("--my", "0px"); });
 });
 
-// ---- accent colors (the eight macOS accents, as in the app) ----------------------------------
+// ---- speed comparison: bars grow to their share of the slower time when the section shows -------
+new IntersectionObserver((entries, obs) => {
+  if (!entries[0].isIntersecting) return;
+  $$(".bench-row").forEach((row, i) => {
+    const orby = parseFloat(row.dataset.orby), win = parseFloat(row.dataset.win), max = Math.max(orby, win);
+    setTimeout(() => {
+      const share = `${Math.max(1.5, orby / max * 100)}%`;
+      row.querySelector(".orby i").style.width = share;
+      row.querySelector(".orby").style.setProperty("--ow", share);
+      row.querySelector(".win i").style.width = `${win / max * 100}%`;
+      row.classList.add("on");
+    }, 250 + i * 180);
+  });
+  obs.disconnect();
+}, { threshold: 0.35 }).observe($("#bench"));
+
+// ---- "notify me" form (Netlify Forms: the site host stores the address; no server of ours) -------
+$("#notify").addEventListener("submit", async e => {
+  e.preventDefault();
+  const form = e.currentTarget, msg = $("#notifyMsg"), button = form.querySelector("button");
+  button.disabled = true;
+  try {
+    const body = new URLSearchParams(new FormData(form)).toString();
+    const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body });
+    if (!res.ok) throw new Error(String(res.status));
+    form.classList.add("sent");
+    msg.textContent = t("notify.ok");
+  } catch {
+    msg.textContent = t("notify.err");
+    button.disabled = false;
+  }
+});
+
+// ---- accent colors (the eight accents of the app) --------------------------------------------
 const ACCENTS = [["#0a84ff", "Azul", "Blue"], ["#bf5af2", "Morado", "Purple"], ["#ff375f", "Rosa", "Pink"], ["#ff453a", "Rojo", "Red"],
   ["#ff9f0a", "Naranja", "Orange"], ["#e6b800", "Amarillo", "Yellow"], ["#30b050", "Verde", "Green"], ["#8e8e93", "Grafito", "Graphite"]];
 function setAccent(c) {
@@ -448,7 +495,7 @@ async function erase(text) {
 async function demoLoop() {
   for (;;) try {
     Demo.setScope(null); Demo.setQuery(""); Demo.setMerged(true, false); Demo.closeCard();
-    await caption("Alt ␣", "Abre WinSpotlight desde cualquier lugar", "Open WinSpotlight from anywhere");
+    await caption("Alt ␣", "Abre OrbySearch desde cualquier lugar", "Open OrbySearch from anywhere");
     await wait(1500);
     await caption("Esc", "Los botones se desprenden como gotas", "The buttons bud off like drops");
     Demo.setMerged(false);
@@ -504,7 +551,7 @@ applyLang();
 fitDemo();
 if (reduced) {
   Demo.setMerged(false, false);
-  caption("Alt ␣", "Abre WinSpotlight desde cualquier lugar", "Open WinSpotlight from anywhere");
+  caption("Alt ␣", "Abre OrbySearch desde cualquier lugar", "Open OrbySearch from anywhere");
 } else {
   demoLoop();
   convLoop();

@@ -1,9 +1,9 @@
-# WinSpotlight — website
+# OrbySearch — website
 
-Landing page for [WinSpotlight](https://github.com/xTony7/WinSpotlight), the macOS-Tahoe-style search bar for Windows.
+Landing page for **OrbySearch**, the fast liquid-glass search bar for Windows.
 
 Plain HTML, CSS and JavaScript: no framework and no build step. The hero demo runs the app's own
-liquid-glass algorithm (metaball necks and SwiftUI-style springs) ported to JavaScript.
+liquid-glass algorithm (metaball necks and spring physics) ported to JavaScript.
 
 | File | What it is |
 | --- | --- |
@@ -14,6 +14,12 @@ liquid-glass algorithm (metaball necks and SwiftUI-style springs) ported to Java
 | `netlify.toml` | Netlify settings: publish this folder, security headers |
 | `og.html` | Source of `assets/og.png`, the link preview image |
 
+## "Notify me" sign-ups
+
+The form in the pricing card uses **Netlify Forms** (no server code). After the first deploy, Netlify
+detects the form named `espera`; sign-ups appear under **Site → Forms**, and you can turn on email
+notifications there. The free plan includes 100 submissions a month.
+
 ## Change the price or the Store link
 
 At the top of `main.js`:
@@ -23,7 +29,6 @@ const CONFIG = {
   price: "3.99",
   currency: "USD",
   storeUrl: "",  // Microsoft Store link once published
-  betaUrl: "https://github.com/xTony7/WinSpotlight/releases/latest",
 };
 ```
 
@@ -37,7 +42,7 @@ Any static server works, for example `python -m http.server 8080`, then open htt
 2. Leave the build command empty; the publish directory is `.` (already set in `netlify.toml`).
 3. Deploy. Every push to `main` redeploys the site.
 
-## Credits
+## Legal
 
-WinSpotlight is based on [LSearch](https://github.com/blueprintnerd/LSearch) by blueprintnerd (Apache 2.0).
-macOS is a trademark of Apple Inc.; Windows is a trademark of Microsoft. Not affiliated with either.
+© 2026 OrbySearch. All rights reserved. Windows and Microsoft Store are trademarks of Microsoft;
+OrbySearch is not affiliated with Microsoft.

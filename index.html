@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WinSpotlight — Todo tu PC, a un atajo</title>
-  <meta name="description" content="El buscador con el estilo de macOS Tahoe, hecho para Windows. Apps, archivos por significado, conversiones y tu portapapeles a un Alt + Espacio.">
+  <title>OrbySearch — Todo tu PC, a un atajo</title>
+  <meta name="description" content="OrbySearch es el buscador más rápido para Windows: apps, archivos, lo que dicen tus documentos, tu historial y más, a un Alt + Espacio. Todo en tu PC.">
   <meta name="theme-color" content="#07080c">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/icon.png">
   <link rel="apple-touch-icon" href="assets/icon.png">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WinSpotlight — Todo tu PC, a un atajo">
-  <meta property="og:description" content="El buscador con cristal líquido para Windows. Apps, archivos, conversiones y portapapeles a un Alt + Espacio.">
+  <meta property="og:title" content="OrbySearch — Todo tu PC, a un atajo">
+  <meta property="og:description" content="El buscador más rápido para Windows, con cristal líquido. Apps, archivos, documentos y más a un Alt + Espacio.">
   <meta property="og:image" content="assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,12 +31,13 @@
   </svg>
 
   <header class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="WinSpotlight">
+    <a class="brand" href="#top" aria-label="OrbySearch">
       <img src="assets/icon.png" alt="" width="28" height="28">
-      <span>WinSpotlight</span>
+      <span>OrbySearch</span>
     </a>
     <nav class="nav-links" aria-label="Secciones">
       <a href="#funciones" data-i18n="nav.features">Funciones</a>
+      <a href="#velocidad" data-i18n="nav.speed">Velocidad</a>
       <a href="#privacidad" data-i18n="nav.privacy">Privacidad</a>
       <a href="#precio" data-i18n="nav.price">Precio</a>
       <a href="#faq" data-i18n="nav.faq">Preguntas</a>
@@ -51,39 +52,67 @@
     <!-- ================= HERO ================= -->
     <section class="hero">
       <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-      <p class="pill reveal"><span class="dot"></span><span data-i18n="hero.pill">Nuevo en v1.3 · Cristal líquido</span></p>
+      <p class="pill reveal"><span class="dot"></span><span data-i18n="hero.pill">Nuevo · OrbySearch 2.0 con motor propio</span></p>
       <h1 class="hero-title">
         <span class="line" data-i18n="hero.t1">Todo tu PC,</span>
         <span class="line grad" data-i18n="hero.t2">a un atajo.</span>
       </h1>
       <p class="hero-sub reveal" style="--d:.15s" data-i18n="hero.sub">
-        El buscador con el estilo de macOS Tahoe, hecho para Windows. Abre apps, encuentra archivos por lo que
-        contienen, convierte monedas y recupera lo que copiaste. Solo pulsa <kbd>Alt</kbd> + <kbd>Espacio</kbd>.
+        El buscador más rápido para Windows, con cristal líquido. Abre apps, encuentra archivos por lo que
+        dicen, convierte monedas y recupera lo que copiaste. Solo pulsa <kbd>Alt</kbd> + <kbd>Espacio</kbd>.
       </p>
       <div class="hero-cta reveal" style="--d:.25s">
         <a class="btn btn-primary magnetic" href="#precio"><span data-i18n="hero.buy">Obtener</span> <span class="price-inline" data-price></span></a>
-        <a class="btn btn-ghost" href="#funciones" data-i18n="hero.how">Ver cómo funciona</a>
+        <a class="btn btn-ghost" href="#velocidad" data-i18n="hero.how">¿Qué tan rápido?</a>
       </div>
       <p class="hero-note reveal" style="--d:.35s" data-i18n="hero.note">Windows 10 y 11 · Funciona sin conexión · Sin cuentas</p>
 
-      <!-- Live demo: the real liquid-glass bar, ported from the app -->
+      <!-- Live demo: the same liquid-glass bar as the app -->
       <div class="stage reveal" style="--d:.45s" id="stage">
         <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div class="demo-scale" id="demoScale">
-          <div class="demo" id="demo" aria-label="Demostración animada del buscador" role="img">
+          <div class="demo" id="demo" aria-label="Demostración animada de OrbySearch" role="img">
             <svg class="goo-shadow" id="gooShadowSvg" width="760" height="52" aria-hidden="true"><path id="gooShadow" /></svg>
             <div class="goo-clip" id="gooGlass"><div class="goo-glass"></div></div>
             <svg class="goo-rim" id="gooRimSvg" width="760" height="52" aria-hidden="true"><path id="gooRim" /></svg>
             <div class="capsule" id="capsule">
               <span class="lead" id="lead"></span>
-              <span class="query"><span id="qText"></span><span class="caret"></span><span class="ph" id="qPh" data-i18n="demo.ph">Buscar</span></span>
+              <span class="query"><span id="qText"></span><span class="caret"></span><span class="ph" id="qPh" data-i18n="demo.ph">Buscar con OrbySearch</span></span>
               <span class="more" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" /><circle cx="6.5" cy="10" r=".9" class="f"/><circle cx="10" cy="10" r=".9" class="f"/><circle cx="13.5" cy="10" r=".9" class="f"/></svg></span>
             </div>
             <div class="drops" id="drops"></div>
-            <div class="card" id="card"><div class="card-in" id="cardIn"></div><div class="card-foot"><span data-i18n="demo.foot">Todo en tu PC · 0,03 s</span><span>↵</span></div></div>
+            <div class="card" id="card"><div class="card-in" id="cardIn"></div><div class="card-foot"><span data-i18n="demo.foot">65.483 archivos · 0,4 ms</span><span>↵</span></div></div>
           </div>
         </div>
         <div class="stage-caption" aria-live="polite"><span class="keycap" id="capKey">Esc</span><span id="capText"></span></div>
+      </div>
+    </section>
+
+    <!-- ================= SPEED ================= -->
+    <section class="section speed" id="velocidad">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="speed.eyebrow">Velocidad</p>
+        <h2 data-i18n="speed.title">Más rápido que<br><span class="grad">el buscador de Windows.</span></h2>
+        <p class="lead-text" data-i18n="speed.p">OrbySearch trae su propio motor de búsqueda. Los resultados aparecen mientras escribes, antes de que termines la palabra.</p>
+      </div>
+      <div class="bench reveal" style="--d:.1s" id="bench">
+        <div class="bench-row" data-orby="0.13" data-win="3.35">
+          <div class="bench-label"><b data-i18n="speed.r1">Nombres de archivo</b><span class="bench-x">25×</span></div>
+          <div class="bar orby"><i></i><span>0,13 ms</span></div>
+          <div class="bar win"><i></i><span>3,35 ms</span></div>
+        </div>
+        <div class="bench-row" data-orby="0.43" data-win="3.35">
+          <div class="bench-label"><b data-i18n="speed.r2">Primeros resultados al escribir</b><span class="bench-x">8×</span></div>
+          <div class="bar orby"><i></i><span>0,43 ms</span></div>
+          <div class="bar win"><i></i><span>3,35 ms</span></div>
+        </div>
+        <div class="bench-row" data-orby="1.0" data-win="10.5">
+          <div class="bench-label"><b data-i18n="speed.r3">Palabras dentro de documentos</b><span class="bench-x">10×</span></div>
+          <div class="bar orby"><i></i><span>1,0 ms</span></div>
+          <div class="bar win"><i></i><span>10,5 ms</span></div>
+        </div>
+        <div class="bench-legend"><span><i class="sw orby"></i>OrbySearch</span><span><i class="sw win"></i><span data-i18n="speed.win">Índice de búsqueda de Windows</span></span></div>
+        <p class="bench-note" data-i18n="speed.note">Mediana de 30 búsquedas equivalentes en un PC con 65.000 archivos y 23.000 documentos, comparando con el índice de Windows Search. Los tiempos varían según el equipo.</p>
       </div>
     </section>
 
@@ -103,7 +132,7 @@
             </g></svg>
           </div>
           <h3 data-i18n="f1.t">Cristal líquido</h3>
-          <p data-i18n="f1.p">Los botones se desprenden de la barra como gotas y se funden con ella al escribir. Animaciones con resortes, fluidas como en un Mac.</p>
+          <p data-i18n="f1.p">Los botones se desprenden de la barra como gotas y se funden con ella al escribir. Animaciones con resortes, suaves y naturales.</p>
         </article>
         <article class="tile glow reveal" style="--d:.08s">
           <div class="tile-art art-semantic" aria-hidden="true">
@@ -111,14 +140,14 @@
             <div class="mini-hit"><span class="fi pdf">PDF</span><span><b>recibo_cfe_03.pdf</b><small data-i18n="f2.hit">«…total a pagar, periodo marzo…»</small></span></div>
           </div>
           <h3 data-i18n="f2.t">Busca por significado</h3>
-          <p data-i18n="f2.p">Escribe lo que recuerdas, no el nombre exacto. Lee el contenido de tus PDF, documentos de Word y código.</p>
+          <p data-i18n="f2.p">Escribe lo que recuerdas, no el nombre exacto. Entiende tus PDF y documentos en más de 100 idiomas, sin salir de tu PC.</p>
         </article>
         <article class="tile glow reveal" style="--d:.12s">
           <div class="tile-art art-conv" aria-hidden="true">
             <div class="conv"><span class="conv-from" id="convFrom">10 USD</span><span class="conv-eq">=</span><span class="conv-to" id="convTo">184.64 MXN</span></div>
           </div>
           <h3 data-i18n="f3.t">Conversiones al instante</h3>
-          <p data-i18n="f3.p">Monedas, distancias, peso y temperatura mientras escribes. Pulsa ↵ y el resultado queda copiado.</p>
+          <p data-i18n="f3.p">Monedas, distancias, peso, temperatura y una calculadora mientras escribes. Pulsa ↵ y el resultado queda copiado.</p>
         </article>
         <article class="tile glow reveal" style="--d:.16s">
           <div class="tile-art art-clip" aria-hidden="true">
@@ -182,10 +211,10 @@
         <h2 data-i18n="priv.title">Lo que buscas<br><span class="grad">se queda en tu PC.</span></h2>
       </div>
       <div class="priv-grid">
-        <div class="priv reveal" style="--d:.1s"><h3 data-i18n="priv.1t">Índice local</h3><p data-i18n="priv.1p">Tus archivos, búsquedas y portapapeles nunca salen de tu equipo. No hay nube.</p></div>
-        <div class="priv reveal" style="--d:.16s"><h3 data-i18n="priv.2t">Sin cuentas ni rastreo</h3><p data-i18n="priv.2p">No te pedimos correo, no hay telemetría ni anuncios. Lo instalas y funciona.</p></div>
-        <div class="priv reveal" style="--d:.22s"><h3 data-i18n="priv.3t">Protegido</h3><p data-i18n="priv.3p">El motor de búsqueda solo responde a WinSpotlight, con una clave que ninguna página web conoce.</p></div>
-        <div class="priv reveal" style="--d:.28s"><h3 data-i18n="priv.4t">Código abierto</h3><p data-i18n="priv.4p">Cualquiera puede revisar lo que hace. Basado en LSearch, con licencia Apache 2.0.</p></div>
+        <div class="priv reveal" style="--d:.1s"><h3 data-i18n="priv.1t">Todo local</h3><p data-i18n="priv.1p">El índice, tus búsquedas y tu portapapeles nunca salen de tu equipo. No hay nube ni servidores.</p></div>
+        <div class="priv reveal" style="--d:.16s"><h3 data-i18n="priv.2t">Sin cuentas ni rastreo</h3><p data-i18n="priv.2p">No te pedimos correo para usarlo, no hay telemetría ni anuncios. Lo instalas y funciona.</p></div>
+        <div class="priv reveal" style="--d:.22s"><h3 data-i18n="priv.3t">Funciona sin internet</h3><p data-i18n="priv.3p">Hasta la búsqueda por significado corre en tu PC. Internet solo se usa para descargar el modelo una vez y para los tipos de cambio.</p></div>
+        <div class="priv reveal" style="--d:.28s"><h3 data-i18n="priv.4t">Tú decides</h3><p data-i18n="priv.4p">Eliges qué carpetas lee, si incluye el historial del navegador y si usa la búsqueda por significado.</p></div>
       </div>
     </section>
 
@@ -198,17 +227,26 @@
       <div class="price-card glow reveal" style="--d:.1s">
         <div class="price-top">
           <img src="assets/icon.png" alt="" width="64" height="64">
-          <div><h3>WinSpotlight</h3><p data-i18n="price.once">Pago único · sin suscripción</p></div>
+          <div><h3>OrbySearch</h3><p data-i18n="price.once">Pago único · sin suscripción</p></div>
         </div>
         <p class="price"><span data-price-big></span></p>
         <ul class="checks">
           <li data-i18n="price.l1">Todas las funciones, sin límites</li>
           <li data-i18n="price.l2">Actualizaciones incluidas</li>
-          <li data-i18n="price.l3">Prueba gratis antes de comprar</li>
+          <li data-i18n="price.l3">Instálalo en todos tus PC con tu cuenta de Microsoft</li>
           <li data-i18n="price.l4">Windows 10 y 11 · español e inglés</li>
         </ul>
         <a class="btn btn-primary btn-block" id="storeBtn" href="#" data-i18n="price.store">Muy pronto en Microsoft Store</a>
-        <a class="btn btn-ghost btn-block" id="betaBtn" href="#" data-i18n="price.beta">Probar la beta gratis</a>
+        <form class="notify" id="notify" name="espera" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="espera">
+          <p class="hp"><label>No llenar: <input name="bot-field"></label></p>
+          <label class="notify-label" for="notifyEmail" data-i18n="notify.label">¿Te avisamos cuando salga?</label>
+          <div class="notify-row">
+            <input id="notifyEmail" type="email" name="email" required autocomplete="email" data-i18n-attr="placeholder:notify.ph" placeholder="tu@correo.com">
+            <button class="btn btn-ghost" type="submit" data-i18n="notify.btn">Avísame</button>
+          </div>
+          <p class="notify-msg" id="notifyMsg" role="status"></p>
+        </form>
       </div>
     </section>
 
@@ -216,11 +254,13 @@
     <section class="section faq" id="faq">
       <div class="section-head reveal"><h2 data-i18n="faq.title">Preguntas frecuentes</h2></div>
       <div class="faq-list">
-        <details class="reveal"><summary data-i18n="faq.q1">¿Necesita internet?</summary><p data-i18n="faq.a1">No. Solo descarga los modelos de búsqueda la primera vez y, si conviertes monedas, consulta el tipo de cambio. Todo lo demás funciona sin conexión.</p></details>
-        <details class="reveal"><summary data-i18n="faq.q2">¿Qué necesito para usarlo?</summary><p data-i18n="faq.a2">Windows 10 (1809 o posterior) u 11 de 64 bits, 8 GB de RAM y unos 400 MB de espacio más el índice. No hace falta instalar Python ni .NET.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q0">¿De verdad es más rápido que el buscador de Windows?</summary><p data-i18n="faq.a0">Sí. OrbySearch tiene su propio motor y mantiene sus índices en memoria: encuentra nombres de archivo unas 25 veces más rápido y el texto dentro de documentos unas 10 veces más rápido que el índice de Windows Search, en la misma consulta. Además empieza a mostrar resultados desde la primera letra.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q1">¿Necesita internet?</summary><p data-i18n="faq.a1">No. Solo descarga una vez el modelo de búsqueda por significado (unos 135 MB) y, si conviertes monedas, consulta el tipo de cambio. Todo lo demás funciona sin conexión.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q2">¿Qué necesito para usarlo?</summary><p data-i18n="faq.a2">Windows 10 (versión 1809 o posterior) u 11 de 64 bits, 4 GB de RAM (8 GB recomendados) y unos 500 MB de espacio más el índice. No hace falta instalar nada más.</p></details>
         <details class="reveal"><summary data-i18n="faq.q3">¿Mis datos salen del PC?</summary><p data-i18n="faq.a3">No. El índice, tus búsquedas y el historial del portapapeles se guardan solo en tu equipo. Lee la <a href="privacy.html">política de privacidad</a>.</p></details>
-        <details class="reveal"><summary data-i18n="faq.q4">¿Puedo cambiar el atajo de teclado?</summary><p data-i18n="faq.a4">Sí. En Configuración haz clic en el atajo y pulsa la combinación que prefieras.</p></details>
-        <details class="reveal"><summary data-i18n="faq.q5">¿Qué carpetas busca?</summary><p data-i18n="faq.a5">Las que tú elijas al instalarlo (Documentos, Escritorio, Descargas…). Además encuentra apps del menú Inicio y de Microsoft Store, y opcionalmente el historial de tu navegador.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q4">¿Qué busca exactamente?</summary><p data-i18n="faq.a4">Apps del menú Inicio y de Microsoft Store, archivos y carpetas en todas tus unidades, el contenido de los documentos de las carpetas que elijas (PDF, Word, Excel, PowerPoint, texto y código) y, si lo activas, el historial de Chrome, Edge, Brave, Vivaldi, Opera y Firefox.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q5">¿Puedo cambiar el atajo de teclado?</summary><p data-i18n="faq.a5">Sí. En Configuración haz clic en el atajo y pulsa la combinación que prefieras.</p></details>
+        <details class="reveal"><summary data-i18n="faq.q6">¿Cómo lo compro?</summary><p data-i18n="faq.a6">OrbySearch se venderá en Microsoft Store con un pago único. Déjanos tu correo arriba y te avisamos el día que salga.</p></details>
       </div>
     </section>
 
@@ -233,12 +273,12 @@
   </main>
 
   <footer class="footer">
-    <div class="foot-brand"><img src="assets/icon.png" alt="" width="22" height="22"> WinSpotlight</div>
+    <div class="foot-brand"><img src="assets/icon.png" alt="" width="22" height="22"> OrbySearch</div>
     <nav class="foot-links">
       <a href="privacy.html" data-i18n="foot.privacy">Privacidad</a>
-      <a href="https://github.com/xTony7/WinSpotlight" rel="noopener">GitHub</a>
+      <a href="#faq" data-i18n="nav.faq">Preguntas</a>
     </nav>
-    <p class="foot-legal" data-i18n="foot.legal">© 2026 WinSpotlight. Basado en <a href="https://github.com/blueprintnerd/LSearch" rel="noopener">LSearch</a> de blueprintnerd (Apache 2.0). macOS es una marca de Apple Inc.; Windows es una marca de Microsoft. Este proyecto no está afiliado con ninguna de ellas.</p>
+    <p class="foot-legal" data-i18n="foot.legal">© 2026 OrbySearch. Todos los derechos reservados. Windows y Microsoft Store son marcas de Microsoft; OrbySearch no está afiliado con Microsoft.</p>
   </footer>
 
   <script src="main.js" defer></script>
