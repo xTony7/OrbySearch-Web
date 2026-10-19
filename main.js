@@ -191,7 +191,7 @@ ACCENTS.forEach(([c, es, en]) => {
   b.addEventListener("click", () => setAccent(c));
   $("#accents").append(b);
 });
-setAccent(ACCENTS[0][0]);
+setAccent(ACCENTS[1][0]); // purple, the brand color
 
 // ---- feature tiles ----------------------------------------------------------------------------
 function fillActions() {
