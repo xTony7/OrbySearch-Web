@@ -5,7 +5,7 @@
 const CONFIG = {
   price: "3.99",
   currency: "USD",
-  storeUrl: "",  // Microsoft Store link once it is published; empty shows "coming soon"
+  storeUrl: "https://apps.microsoft.com/detail/9PKD6DR49V66",  // Microsoft Store link; empty shows "coming soon"
 };
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;

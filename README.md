@@ -28,7 +28,7 @@ At the top of `main.js`:
 const CONFIG = {
   price: "3.99",
   currency: "USD",
-  storeUrl: "",  // Microsoft Store link once published
+  storeUrl: "https://apps.microsoft.com/detail/9PKD6DR49V66",  // Microsoft Store link
 };
 ```
 
